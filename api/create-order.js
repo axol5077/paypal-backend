@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     `${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_SECRET}`
   ).toString("base64");
 
-  const response = await fetch("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
+  const response = await fetch("https://api-m.paypal.com/v2/checkout/orders", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
         {
           amount: {
             currency_code: "USD",
-            value: req.body.total || "8.00",
+            value: req.body.total,
           },
         },
       ],
@@ -27,5 +27,5 @@ export default async function handler(req, res) {
   });
 
   const data = await response.json();
-  res.status(200).json({ id: data.id });
+  res.status(response.status).json(data);
 }
