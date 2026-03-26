@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     `${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_SECRET}`
   ).toString("base64");
 
-  const response = await fetch("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
+  const response = await fetch("https://api-m.paypal.com/v2/checkout/orders", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
