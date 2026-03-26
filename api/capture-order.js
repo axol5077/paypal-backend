@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   ).toString("base64");
 
   const response = await fetch(
-    `https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}/capture`,
+    `https://api-m.paypal.com/v2/checkout/orders/${orderID}/capture`,
     {
       method: "POST",
       headers: {
