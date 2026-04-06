@@ -21,6 +21,7 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         Authorization: `Basic ${auth}`,
+        "Content-Type": "application/json",
       },
     }
   );
